@@ -20,7 +20,7 @@ Video Walkthrough - https://www.youtube.com/watch?v=Yi_FXJwm6-0
 Our system uses the CLEAN system architecture according to what the KelownaSoftware template provided us with. The architecture allows us to maintain consitency and reusability that is so important in a larger scale project.
 
 
-![Clean Diagram](./docs/design/CleanArchitecture.png)
+![Clean Diagram](./CleanArchitecture.png)
 
 - **Client:** Frontend component.
 - **Server:** Backend server: The entry point for API calls.
