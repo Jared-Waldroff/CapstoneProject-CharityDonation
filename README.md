@@ -27,7 +27,7 @@ Our system uses the CLEAN system architecture according to what the KelownaSoftw
 - **Infrastructure Layer:** Interfaces for external dependencies and services.
 - **Persistence Layer:** Manages data access.
 
-## Components  — Clean Architecture Overview
+## Components
 
 | Layer / Component | Tech Stack | Responsibility | Key Elements |
 |-------------------|-----------|----------------|--------------|
