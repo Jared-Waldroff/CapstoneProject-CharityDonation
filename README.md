@@ -162,83 +162,39 @@ See [API Docs](./docs/design/API/API_Documentation.md)
 
 ## Features
 
-Core Features:
-Create Account:
-A vendor can create a new account given an email as their unique identifier and password. They can login and be routed to their campaign dashboard. Some basic accounts that can be used to test different features are 2@2.com password: Testing123! and vm@vm.com password: Testing123!
+### Core Features
+| Feature | What it does |
+|---------|--------------|
+| **Create Account** | Vendors register with email + password and are routed to their personal dashboard.<br/>*Demo creds*: `2@2.com / Testing123!`, `vm@vm.com / Testing123!` |
+| **Create Charity** | Search 85 k + CRA charities, add nicknames, and manage your own list (Vendor-Manager role required). |
+| **Create Campaign** | Wizard-style flow:<br/>1. **Basic Info** – name, description, goal, sign-up value<br/>2. **Fields** – choose required/custom attendee fields & “refer-a-friend” bonus<br/>3. **Eligible Charities** – pick from your charity list<br/>4. **Review** – Activate / deactivate anytime |
+| **Campaign Dashboard** | Real-time graphs (sign-ups over time & by charity), KPI cards, CSV export, live refresh. |
 
-Create Charity:
-A vendor must create their own charity on the charity page before creating a campaign. A base charity can be searched for that is taken from a list of 85,000 charities from the Canadian government which show their name and location. Vendors can add their own nickname to the charity to shorten length and better communicate their cause. Vendors can create as many as they would like and their information can be viewed on the charities tab. If you are a vendor under manager role such as the 2@2.com account is to the vm@vm.vom , you will not be able to pick new charities to add to campaigns. This ability is reserved for the Vendor Manager.
-Create Campaign: 
-Basic Campaign Information:
-Campaigns can be created by vendors by choosing a name, description, donation goal, and sign up value. The sign up value is how much money will be donated to the user upon each attendee signup. Users can later edit this part of their campaign from the campaign specific dashboard.
+### Attendee Experience
+| Step | Details |
+|------|---------|
+| **Access Page** | Opens in a new window from the vendor dashboard. |
+| **Dashboard View** | Goal progress, charity info, shareable QR code. |
+| **Fish Gamification** | Pick a fish to drop in the tank—latest fish gets a crown ✨ (local-only bug on prod). |
+| **Sign-up Flow** | Choose charity → fill required fields → confetti + email-confirm toast → add fish. |
 
-Choosing Fields:
-The next page allows the vendor to customize what fields they would like to receive from a user. The email is always required, but the vendor can decide from preset types of fields such as name, age, location, job, and can decide whether each field is required before attendee submission. We acknowledged that we did not provide an exhaustive list of potential fields, so we allow the user to specify custom fields with whatever they would like from the vendor. There is also an option for the vendor to allow attendees to refer a friend. If selected, they can provide a “bonus” donation amount if an attendee inputs an email which has already signed up.
+### Organizations
+| Feature | What it does |
+|---------|--------------|
+| **Create / Join** | Generate an org code and share it with teammates. |
+| **Org Dashboard** | Leaderboard of members (crown for top donor), aggregate stats for campaigns, sign-ups & donations. |
+| **Role-Based Restrictions** | Org leader controls colours/logo & charity list—members inherit settings. |
 
-Selecting Eligible Charities:
-After selecting the fields, vendors are prompted to choose which charities attendees can donate to via their campaign. The list of charities to choose comes from the charities created by the vendor, and any charities created by their organization if they’ve joined one.
+### Profile & Personalization
+* **Account Info** – view roles & permissions  
+* **Brand Colours** – set primary / secondary / tertiary (auto-propagates to org)  
+* **Logo Upload** – displays across dashboards & attendee pages  
+* **Achievements** – badges, toast notifications, level-up progress bar  
 
-Viewing Created Campaigns:
-The campaign will now be created and added to their campaign dashboard. Vendors can activate and deactivate their campaign as needed to prevent attendees with the link to sign up while not attending a convention.
+### Bonus Features
+| Feature | What it does |
+|---------|--------------|
+| **Admin Page** | `admin@admin.com / Testing123!` – edit users, ban/unban (soft-ban, no hard deletes). |
+| **Translations** | One-click English / French via *ngx-translate*. |
+| **Leaderboard** | Global vs. org-only charts (filter by sign-ups or donations). |
 
-
-
-
-Campaign Dashboard: 
-After a campaign is created, vendors can click view to see the campaigns dashboard, which displays campaign information, graphs regarding signups, general statistics about the campaign, and view/download csv data of user information collected.
-Campaign Dashboard Graphs:
-There are graphs on the campaign dashboard which show the number of signups over time and the number of signups for each charity. The time series graph can be customized from minute, hours, day to see where most of the campaigns signups were concentrated. When there are multiple charities to sign up for per campaign, the charity graph compares which charities attendees are choosing to donate to the most.
-
-Campaign Dashboard Stats:
-The stats are displayed in kendo cards and show the campaigns signup value, total signups, total amount donated, and the donation goal. 
-
-Download CSV Data:
-All the information collected by the campaign can be viewed in a table on the campaign dashboard. A button is included to download the csv for whatever the vendor needs the information for. Vendors can click refresh data to get any live updates without needing to refresh an entire page. A column is included describing whether the attendee verified their email after signing up.
-Attendee Signup:
-Accessing Page:
-The attendee signup page can be accessed via the campaign dashboard. The page pops up in a new window to prevent attendees from navigating to pages intended for the vendor.
-
-Dashboard:
-The right side of the attendee page displays all basic information of the campaign an attendee is viewing. There is a progress bar showing how far along the campaign is to their goal, and information about all the charities which can be selected. A QR code is included to allow users to access the site on their phones if they want to keep walking while signing up.
-
-Fish Gamification:
-You’ll see on the left hand side a fish tank . In order to allow users to leave a lasting impression on the campaign, attendees can select a fish to add to the fishtank. The most recent fish to be added will have a crown for users to immediately identify their addition. This has a bug where the fish won’t show up on the deployed server but it will show up when you run it locally.
-
-Inputting Information:
-After an attendee clicks sign up, they select which charity they’d like to donate to, and fill out all the information specified by the vendor. They cannot submit their information until all required fields are filled in, and the attendee agrees for their information to be used by the vendor. If registration is successful, confetti flies, a toast notification to check their email for confirmation is displayed, and the attendee can select a fish to add to the tank.
-
-Organizations:
-Creating/Joining Organization:
-Via the organization tab, a vendor can create an organization with a name of their choice. Once made, vendors can copy the organization code and send it to other representatives in their organization to join. Simply click join and paste the organization code in to be allowed in. 
-
-Organization Dashboard:
-The left side of the organization dashboard shows the owner and a list of all the members and their respective signups and donations. The member with the most donations will have a crown displayed next to their name. The right side of the organization dashboard shows aggregate statistics of campaigns, members, signups, and donations that the entire organization has done.
-
-Restricting Vendor Members:
-Members in the organization can see the current settings set by the organization leader in the dashboard. The colors and logo will automatically populate on their dashboards and campaigns. Members are prevented from being able to change these while in the organization. Other charities created by the organization leader will now be available to their members, and the members will be restricted from creating more. 
-
-Profile Page:
-Viewing Account Information:
-The profile page can be reached by clicking the profile tab in the navbar, or clicking the user’s email in the top right of the header. Vendors can check basic information about their profile, and see what permissions they have (Vendor, Vendor Manager or Vendor Under Manager).
-
-Changing Colors:
-Vendors can also change the primary, secondary, and tertiary colors of the platform to reflect the company they are representing. These colors will be displayed in all the dashboards and the attendee signup page. If you are the leader of an organization, these colors will populate across all the members as well. Note: Occasionally, switching accounts will cause the site to populate colors from the previous account. This is due to a small issue with our current user service, and refreshing the page fixes the issue.
-
-Changing Logo:
-Vendors can also upload their company logo to be displayed in their header, and on the attendee sign up page. Just like the colors, they will populate across members in the organization. Note: The first time a vendor account is created, viewing the profile page will show a warning toast “vendor settings cannot be found”. This is because a vendor setting in the database is not created upon account registry but when they view a profile page. This will not persist multiple times
-
-Achievements:
-Vendors are able to receive achievements for receiving different accolades from creating campaigns, collecting signups, and donation milestones. All earned and unearned achievements (and their respective badges) can be viewed from the profile page. A toast will be shown when a new achievement is earned.
-
-
-Achievement Progress:
-The profile page includes an interactive leveling system. After a certain amount of achievements are received, a vendor can “level up” to the next stage.
-Bonus Features:
-Admin Page: 
-An admin account is created with credentials admin@admin.com Testing123! (this can and should be configured of course). An Admin can do all the functions of a normal vendor, but also has access to the admin page. The admin can edit user information and ban/unban vendors. If a vendor is banned, they can no longer login to the platform and will be notified when attempting to. The unbanning feature is important as we do not want to irreversibly delete user data.
-
-Translations:
-At the bottom of the navbar, vendors can switch between English and French languages for the platform. All hard-coded text across the website will be swapped using the ngx translate library. 
-
-Leaderboard:
-The leaderboard page shows the rankings of top vendors across the entire platform in a bar graph. It can be filtered to show sign ups or donations, and a button is included to switch between seeing members of the whole platform, or just those in your organization.
