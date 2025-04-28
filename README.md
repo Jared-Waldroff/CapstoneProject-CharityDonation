@@ -5,6 +5,8 @@ This project involves the development of a web application designed to enhance i
 
 If you need to review the implementation, please contact me directly for restricted access.
 
+Video Walkthrough - https://www.youtube.com/watch?v=Yi_FXJwm6-0
+
 ## Table of Contents
 1. [System Architecture](#system-architecture)
 2. [Components](#components)
