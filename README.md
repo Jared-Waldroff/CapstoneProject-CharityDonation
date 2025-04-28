@@ -27,77 +27,16 @@ Our system uses the CLEAN system architecture according to what the KelownaSoftw
 - **Infrastructure Layer:** Interfaces for external dependencies and services.
 - **Persistence Layer:** Manages data access.
 
-## Components
-### Client
-The client application is developed using **Angular**, a robust front-end framework that allows for the creation of dynamic, single-page applications. This component serves as the user interface for interacting with the backend services and is designed to provide a seamless and responsive user experience. The website incorporates Kendo UI compoennts to enhance the visual appeal and functionality of the application. 
+## Components  — Clean Architecture Overview
 
-#### Key Components:
-- **Angular Components:** UI components for various views (e.g., dashboard, forms, lists).
-- **Services:** HTTP services for making API calls to the server.
-- **State Management:** Management of application state using libraries like NgRx or services.
-- **Routing:** Configuration of client-side routing for navigation between different views.
-- **Styling:** Integration of styles and themes for a cohesive UI/UX, possibly using CSS frameworks or libraries.
-- **Form Validation:** Implementation of reactive forms with validation logic.
-
-### Server
-The server component is built using **ASP.NET**, a powerful framework for developing web applications and APIs. This component acts as the backbone of the application, handling incoming requests, processing business logic, and interacting with the database layer.
-
-ASP.NET provides robust features for routing, model binding, and dependency injection, enabling the development of a scalable and maintainable architecture. The server exposes RESTful APIs that the client application can consume, facilitating seamless communication between the front end and back end. 
-
-With ASP.NET’s built-in security features and middleware capabilities, the server is designed to ensure secure and efficient data handling, setting a solid foundation for future enhancements and integrations.
-
-#### Key Components:
-- **API Controllers:** RESTful controllers for handling incoming requests and returning responses.
-- **Middleware:** Custom middleware for logging, error handling, and authentication.
-- **Dependency Injection:** Configuration of dependency injection for managing service lifetimes and dependencies.
-- **Business Logic:** Service classes that encapsulate business rules and coordinate data processing.
-- **Data Transfer Objects (DTOs):** Use of DTOs for shaping data exchanged between the client and server.
-
-### Application
-The Application layer serves as the intermediary between the presentation layer and the domain layer, encapsulating the use cases and application logic of the system. This layer is responsible for coordinating the flow of data between the user interface and the underlying domain models, ensuring that business rules are adhered to.
-
-By employing patterns such as Command and Query Responsibility Segregation (CQRS), the application layer efficiently handles requests for data retrieval and manipulation. It orchestrates the interaction with the domain services, managing transactions and integrating with the infrastructure to facilitate operations such as sending notifications or processing user input. This separation of concerns promotes cleaner code and enhances maintainability.
-
-#### Key Components:
-- **Use Cases:** Definition of application-specific use cases for handling commands and queries.
-- **Command Handlers:** Classes that process commands and execute the necessary business logic.
-- **Query Handlers:** Classes that execute queries to retrieve data and prepare it for the client.
-- **Validation Logic:** Implementation of validation rules for commands before processing.
-- **Transaction Management:** Management of database transactions to ensure data consistency.
-
-### Domain
-The Domain layer is the core of the application, housing the business logic and domain models that represent the fundamental concepts and rules of the system. This layer is designed to be independent of external frameworks, ensuring that it remains focused on the business logic without being influenced by technological choices.
-
-Domain models encapsulate the essential data and behavior relevant to the business, allowing for a clear representation of entities and their relationships. By employing domain-driven design principles, this layer enables a rich understanding of the problem space, fostering a more intuitive and coherent architecture that can adapt to changing business requirements.
-
-#### Key Components:
-- **Domain Models:** Definition of entities that represent the core business concepts (e.g., User, Campaign).
-- **Value Objects:** Creation of value objects for representing attributes that have no identity (e.g., Email, Address).
-- **Domain Services:** Implementation of services that contain business logic not belonging to any single entity.
-- **Aggregate Roots:** Definition of aggregate roots to enforce consistency boundaries within the domain.
-
-### Infrastructure
-The Infrastructure layer serves as the technical foundation of the application, providing implementations for external dependencies and services that the application and domain layers rely on. This includes components such as data access, logging, caching, and external service integrations (e.g., email services, payment gateways).
-
-By abstracting these technical details from the core business logic, the infrastructure layer promotes loose coupling and allows for easier testing and maintenance. It also enables the application to interact with various external systems while maintaining a consistent interface for the domain and application layers.
-
-#### Key Components:
-- **Data Access Layer:** Implementation of repositories for interacting with the database using Entity Framework Core.
-- **External Service Integrations:** Interfaces and implementations for external services (e.g., email, payment processing).
-- **Logging:** Setup of logging for tracking application behavior and errors.
-- **Caching:** Implementation of caching strategies for improving read performance.
-- **Configuration Management:** Handling application settings and environment-specific configurations.
-
-### Persistence
-The Persistence layer is responsible for managing data storage and retrieval, typically interacting with databases. This layer utilizes Entity Framework Core to abstract the complexities of database operations, enabling a clean and intuitive interface for data access.
-
-Through this layer, the application can perform CRUD (Create, Read, Update, Delete) operations on domain models, ensuring that data integrity and relationships are maintained. The persistence layer is designed to facilitate seamless interactions with the database while allowing for future modifications, such as changing the underlying database technology or optimizing data access patterns.
-
-#### Key Components:
-- **Database Context:** Configuration of the Entity Framework Core DbContext for managing database connections.
-- **Migrations:** Setup of database migrations for evolving the database schema over time.
-- **Seed Data:** Implementation of seed data to populate the database with initial values.
-- **Query Optimizations:** Writing optimized queries for efficient data retrieval.
+| Layer / Component | Tech Stack | Responsibility | Key Elements |
+|-------------------|-----------|----------------|--------------|
+| **Client** | *Angular&nbsp;+ Kendo UI* | Single-page web UI for vendors & attendees | • Angular components & routing<br/>• HTTP services<br/>• State management (NgRx / services)<br/>• Reactive forms & validation |
+| **Server** | *ASP.NET Core* | REST API, auth, business logic | • API controllers<br/>• Middleware (logging, auth)<br/>• Dependency injection<br/>• DTOs & service layer |
+| **Application** | *.NET (CQRS)* | Coordinates use-cases between UI & domain | • Command / Query handlers<br/>• Validation rules<br/>• Transaction management |
+| **Domain** | *Plain C#* | Core business rules—framework-agnostic | • Entities (User, Campaign, …)<br/>• Value objects<br/>• Domain services<br/>• Aggregate roots |
+| **Infrastructure** | *EF Core, external SDKs* | Implements technical concerns | • Repositories<br/>• External integrations (email, payments)<br/>• Logging & caching<br/>• Config management |
+| **Persistence** | *SQL Server + EF Core* | Data storage & retrieval | • DbContext<br/>• Migrations & seed data<br/>• Query optimisation |
 
 
 ## Installation and Setup
